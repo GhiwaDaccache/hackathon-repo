@@ -1,40 +1,43 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "../components/Header";
+import { useGeolocation } from "@uidotdev/usehooks";
+import axios from "axios";
 
 const Authentication = () => {
   const [login, setLogin] = useState(false);
-  const [location, setLocation] = useState("");
-  const [latLong, setLatLong] = useState({ latitude: 0, longitude: 0 });
+  const location = useGeolocation();
+  const [authInfo, setAuthInfo] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+  const [latLong, setLatLong] = useState({
+    latitude: 0,
+    longitude: 0,
+  });
 
-  const handleClick = () => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        async (position) => {
-          const latitude = position.coords.latitude;
-          const longitude = position.coords.longitude;
-          setLatLong({
-            latitude: latitude,
-            longitude: longitude,
-          });
-          try {
-            const response = await fetch(
-              `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`
-            );
-            const data = await response.json();
-            const cityName = data.locality;
-            setLocation(cityName);
-          } catch (error) {
-            console.error("Error fetching city name:", error.message);
-          }
-        },
-        (error) => {
-          console.error("Error getting geolocation:", error.message);
-        }
-      );
-    } else {
-      console.error("Geolocation is not supported by this browser.");
-    }
+  const handleInputChange = (type, value) => {
+    setAuthInfo({
+      ...authInfo,
+      [type]: value,
+    });
   };
+
+  const handleAuth = () => {
+    axios({
+      method: "POST",
+      body: {},
+    });
+  };
+
+  useEffect(() => {
+    if (!location.loading && !location.error) {
+      setLatLong({
+        latitude: location.latitude,
+        longitude: location.longitude,
+      });
+    }
+  }, [location]);
 
   return (
     <main className="w-screen h-screen bg-slate-900">
@@ -47,26 +50,27 @@ const Authentication = () => {
           <form className="mt-4 flex flex-col gap-4">
             {!login && (
               <input
+                value={authInfo.name}
+                onChange={(e) => setAuthInfo("name", e.target.value)}
                 type="text"
                 placeholder="Name"
                 className="w-full p-2 border rounded-lg outline-none focus:border-slate-900"
               />
             )}
             <input
+              value={authInfo.email}
+              onChange={(e) => setAuthInfo("email", e.target.value)}
               type="email"
               placeholder="Email Address"
               className="w-full p-2 border rounded-lg outline-none focus:border-slate-900"
             />
             <input
+              value={authInfo.password}
+              onChange={(e) => setAuthInfo("password", e.target.value)}
               type="password"
               placeholder="Password"
               className="w-full p-2 border rounded-lg outline-none focus:border-slate-900"
             />
-            {!login && (
-              <button type="button" onClick={handleClick}>
-                Get Location
-              </button>
-            )}
             <button
               type="submit"
               className="px-4 py-2 rounded-lg text-white bg-blue-950 inline-block mx-auto mt-auto"
