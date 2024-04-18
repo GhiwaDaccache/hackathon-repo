@@ -3,15 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Comment;
 
 class CommentController extends Controller
 {
     public function create_comment(Request $req){
         $comment = Comment::create([
-            "description" => $req->description,
+            "comment" => $req->comment,
             "post_id" => $req->post_id,
-            "user_id" => $req->user_id,
+            "user_id" => Auth::id(),
         ]);
 
         return response()->json([

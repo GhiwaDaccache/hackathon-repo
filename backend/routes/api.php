@@ -21,6 +21,8 @@ Route::group(["middleware" => "user.role"], function (){
     Route::post('create_post', [PostController::class, 'create_post']);
     Route::post('create_comment', [CommentController::class, 'create_comment']);
 
+    Route::get('get_comments/{id}', [CommentController::class, 'get_comments']);
+
 });
 
 
