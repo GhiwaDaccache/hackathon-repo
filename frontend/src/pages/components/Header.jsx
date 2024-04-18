@@ -2,7 +2,7 @@ import NavLink from "./NavLink";
 import { Link } from "react-router-dom";
 import Logo from "../../components/Logo";
 
-const Header = ({ className = "" }) => {
+const Header = ({ className = "", loggedIn = false }) => {
   return (
     <header
       className={`container mx-auto flex items-center justify-between gap-4 py-8 ${className}`}
@@ -14,7 +14,7 @@ const Header = ({ className = "" }) => {
         <NavLink to="/">Home</NavLink>
         <NavLink to="/#tips-tricks">Tips & Tricks</NavLink>
         <NavLink to="/#previous-disasters">Previous Disasters</NavLink>
-        <NavLink to="/auth">Login / Signup</NavLink>
+        {!loggedIn && <NavLink to="/auth">Login / Signup</NavLink>}
       </div>
     </header>
   );

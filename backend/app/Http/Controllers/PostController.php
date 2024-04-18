@@ -10,28 +10,23 @@ use App\Models\User;
 
 class PostController extends Controller
 {
-    public function create_post(Request $req){
-        if($req->hasFile('image')){
-            $file = $req->file('image');
-            $extension = $file->getClientOriginalExtension();
-            $filename = time(). ".". $extension;
-            $file->move(public_path('/posts'), $filename);
-        }
+    public function create_post(Request $req)
+    {
+        // if($req->hasFile('image')){
+        //     $file = $req->file('image');
+        //     $extension = $file->getClientOriginalExtension();
+        //     $filename = time(). ".". $extension;
+        //     $file->move(public_path('/posts'), $filename);
+        // }
         $post = Post::create([
-            "image" => $filename,
+            // "image" => $filename,
             "description" => $req->description,
-            "user_id" =>Auth::id(),
-            "location" => $req->location,
+            "user_id" => $req->user_id,
+            // "location" => $req->location,
         ]);
 
         return response()->json([
             "message" => "Post created successfully"
         ], 201);
     }
-
-
-
-
-
-
 }

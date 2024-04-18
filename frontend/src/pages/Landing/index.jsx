@@ -379,12 +379,12 @@ const Landing = () => {
       </section>
 
       <section className="mt-4 container mx-auto" id="previous-disasters">
-        <h2 className="my-4" id="tips-tricks">
+        <h2 className="my-8" id="tips-tricks">
           Tips & Tricks
         </h2>
         <TipsTricksCarousel />
 
-        <h2 className="my-4">Previous Disasters</h2>
+        <h2 className="my-8">Previous Disasters</h2>
         {error && (
           <p className="text-red-600 font-bold">
             Sorry, something went wrong and we couldn't fetch the most recent
