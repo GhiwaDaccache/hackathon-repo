@@ -5,16 +5,17 @@ import axios from "axios";
 
 // Components
 import Header from "../components/Header";
-import DisasterCarousel from "./components/TipsTricksCarousel";
+import DisasterCard from "./components/DisasterCard";
+import TipsTricksCarousel from "./components/TipsTricksCarousel";
 
 // Assets
 import map from "../../assets/map.png";
 import app_store from "../../assets/appstore.png";
 import google_play from "../../assets/googleplay.png";
-import DisasterCard from "./components/DisasterCard";
 
 const Landing = () => {
   const location = useGeolocation();
+  const [error, setError] = useState(false);
   const [disasters, setDisasters] = useState([
     {
       id: "us7000ki5u",
@@ -322,14 +323,19 @@ const Landing = () => {
       },
     })
       .then((response) => {
-        const { errorCode, count, data } = response.data;
+        const { errorCode, data } = response.data;
+        if (errorCode === "none") {
+          setDisasters(data);
+        } else {
+          setError(true);
+        }
       })
-      .catch((error) => {});
+      .catch((error) => setError(true));
   };
   useEffect(() => {
     if (!location.loading && !location.error) {
       const { latitude, longitude } = location;
-      // getPreviousDisasters(latitude, longitude);
+      getPreviousDisasters(latitude, longitude);
     }
   }, [location]);
 
@@ -371,16 +377,24 @@ const Landing = () => {
         </svg>
       </section>
 
-      <section className="container mx-auto">
-        <h2 className="mb-4">Previous Disasters</h2>
+      <section className="mt-4 container mx-auto" id="previous-disasters">
+        <h2 className="my-4" id="tips-tricks">
+          Tips & Tricks
+        </h2>
+        <TipsTricksCarousel />
+
+        <h2 className="my-4">Previous Disasters</h2>
+        {error && (
+          <p className="text-red-600 font-bold">
+            Sorry, something went wrong and we couldn't fetch the most recent
+            disasters. Try to reload the page.
+          </p>
+        )}
         <div className="grid grid-cols-3 gap-4">
-          {disasters.map((disaster) => (
-            <DisasterCard disaster={disaster} />
+          {disasters.map((disaster, index) => (
+            <DisasterCard key={index} disaster={disaster} />
           ))}
         </div>
-
-        <h2 className="my-4">Tips & Tricks</h2>
-        <DisasterCarousel />
       </section>
     </>
   );

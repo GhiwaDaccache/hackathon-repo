@@ -16,10 +16,11 @@ const DisasterCard = ({ disaster }) => {
     <div className="p-10 rounded-lg border flex flex-col gap-4">
       <h3>{title}</h3>
       <p>
-        {city}, {place}
+        {city}, {place} <br />
+        <span className="text-gray-400 text-sm">{date}</span>
       </p>
       <a
-        href={detailUrl}
+        href={url}
         target="_blank"
         className="px-4 py-2 rounded-lg text-white bg-blue-950 inline-block mx-auto mt-auto"
       >

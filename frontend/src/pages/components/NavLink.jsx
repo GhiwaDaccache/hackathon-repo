@@ -1,7 +1,5 @@
-import { Link } from "react-router-dom";
-
 const NavLink = ({ to = "/", children }) => {
-  return <Link to={to}>{children}</Link>;
+  return <a href={to}>{children}</a>;
 };
 
 export default NavLink;

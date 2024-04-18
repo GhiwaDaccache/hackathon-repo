@@ -11,10 +11,10 @@ const Header = ({ className = "" }) => {
         <NavLink>Search & Rescue</NavLink>
       </div>
       <div className="text-white flex gap-4">
-        <NavLink>About</NavLink>
-        <NavLink>Tips & Tricks</NavLink>
+        <NavLink to="#">About</NavLink>
+        <NavLink to="#tips-tricks">Tips & Tricks</NavLink>
+        <NavLink to="#previous-disasters">Previous Disasters</NavLink>
         <NavLink>FAQ</NavLink>
-        <NavLink>Help</NavLink>
       </div>
     </header>
   );
