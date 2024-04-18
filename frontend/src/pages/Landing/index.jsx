@@ -1,22 +1,33 @@
+// Components
+import Header from "../components/Header";
+
 // Assets
 import map from "../../assets/map.png";
-import app_store from "../../assets/appstore.png"
-import google_play from "../../assets/googleplay.png"
+import app_store from "../../assets/appstore.png";
+import google_play from "../../assets/googleplay.png";
 
 const Landing = () => {
   return (
     <>
-      <section className="bg-slate-900 min-h-screen">
-        <img src={map} className="w-full h-full absolute top-0 left-0 z-0 opacity-50" />
+      <section className="bg-slate-900 min-h-screen relative">
+        <img
+          src={map}
+          className="w-full h-full absolute top-0 left-0 z-0 opacity-50"
+        />
 
-        <div className="relative container text-white ml-auto z-10 max-w-lg flex flex-col gap-4 -translate-y-20">
-          <h1 className="text-5xl font-bold">
-            Disaster Prevention App
-          </h1>
-          <p>Delivering the most appropriate information at the fastest level.</p>
-          <div className="flex gap-4">
-            <img src={app_store} alt="App Store" className="w-40" />
-            <img src={google_play} alt="Google Play" className="w-40" />
+        <Header className="mb-24 relative z-10" />
+
+        <div className="container mx-auto flex justify-between items-start">
+          <div className=""></div>
+          <div className="relative container text-white z-10 max-w-lg flex flex-col gap-4">
+            <h1 className="text-5xl font-bold">Disaster Prevention App</h1>
+            <p>
+              Delivering the most appropriate information at the fastest level.
+            </p>
+            <div className="flex gap-4">
+              <img src={app_store} alt="App Store" className="w-40" />
+              <img src={google_play} alt="Google Play" className="w-40" />
+            </div>
           </div>
         </div>
 
