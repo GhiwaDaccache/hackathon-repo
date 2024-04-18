@@ -63,7 +63,6 @@
 ## About The Project
 
 <img src="./readme/screenshot_2024-04-18_at_6.03.08___pm.png" alt="Logo" >
-<img src="./readme/IMG_2205.jpg"  >
 
 ResQ is an app that syncs with a gadget to aid users during natural disasters. It broadcasts emergency alerts, provides guidance on what to do, and offers navigation assistance to safety. It also fosters community support and works offline for accessibility.
 
