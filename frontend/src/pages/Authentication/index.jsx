@@ -26,7 +26,11 @@ const Authentication = () => {
   const handleAuth = () => {
     axios({
       method: "POST",
-      body: {},
+      body: {
+        ...authInfo,
+        latitude: latLong.latitude,
+        longitude: latLong.longitude,
+      },
     });
   };
 
@@ -51,7 +55,7 @@ const Authentication = () => {
             {!login && (
               <input
                 value={authInfo.name}
-                onChange={(e) => setAuthInfo("name", e.target.value)}
+                onChange={(e) => handleInputChange("name", e.target.value)}
                 type="text"
                 placeholder="Name"
                 className="w-full p-2 border rounded-lg outline-none focus:border-slate-900"
@@ -59,14 +63,14 @@ const Authentication = () => {
             )}
             <input
               value={authInfo.email}
-              onChange={(e) => setAuthInfo("email", e.target.value)}
+              onChange={(e) => handleInputChange("email", e.target.value)}
               type="email"
               placeholder="Email Address"
               className="w-full p-2 border rounded-lg outline-none focus:border-slate-900"
             />
             <input
               value={authInfo.password}
-              onChange={(e) => setAuthInfo("password", e.target.value)}
+              onChange={(e) => handleInputChange("password", e.target.value)}
               type="password"
               placeholder="Password"
               className="w-full p-2 border rounded-lg outline-none focus:border-slate-900"
