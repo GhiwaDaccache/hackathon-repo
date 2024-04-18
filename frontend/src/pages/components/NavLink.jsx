@@ -1,5 +1,9 @@
-const NavLink = ({ to = "/", children }) => {
-  return <a href={to}>{children}</a>;
+const NavLink = ({ to = "/", className = "", children }) => {
+  return (
+    <a href={to} className={className}>
+      {children}
+    </a>
+  );
 };
 
 export default NavLink;
