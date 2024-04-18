@@ -335,7 +335,7 @@ const Landing = () => {
   useEffect(() => {
     if (!location.loading && !location.error) {
       const { latitude, longitude } = location;
-      getPreviousDisasters(latitude, longitude);
+      // getPreviousDisasters(latitude, longitude);
     }
   }, [location]);
 
