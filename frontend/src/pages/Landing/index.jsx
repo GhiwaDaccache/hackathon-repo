@@ -13,6 +13,7 @@ import Footer from "../components/Footer";
 import map from "../../assets/map.png";
 import app_store from "../../assets/appstore.png";
 import google_play from "../../assets/googleplay.png";
+import mockup from "../../assets/mockup.png";
 
 const Landing = () => {
   const location = useGeolocation();
@@ -348,11 +349,13 @@ const Landing = () => {
           className="w-full h-full absolute top-0 left-0 z-0 opacity-50"
         />
 
-        <Header className="mb-24 relative z-10" />
+        <Header className="relative z-10" />
 
         <div className="container mx-auto flex justify-between items-start">
-          <div className=""></div>
-          <div className="relative container text-white z-10 max-w-lg flex flex-col gap-4">
+          <div className="flex justify-center">
+            <img src={mockup} className="w-[220px]" />
+          </div>
+          <div className="relative container text-white z-10 max-w-lg flex flex-col gap-4 mt-24">
             <h1 className="text-5xl font-bold">Disaster Prevention App</h1>
             <p>
               Delivering the most appropriate information at the fastest level.
@@ -379,12 +382,12 @@ const Landing = () => {
       </section>
 
       <section className="mt-4 container mx-auto" id="previous-disasters">
-        <h2 className="my-4" id="tips-tricks">
+        <h2 className="my-8" id="tips-tricks">
           Tips & Tricks
         </h2>
         <TipsTricksCarousel />
 
-        <h2 className="my-4">Previous Disasters</h2>
+        <h2 className="my-8">Previous Disasters</h2>
         {error && (
           <p className="text-red-600 font-bold">
             Sorry, something went wrong and we couldn't fetch the most recent

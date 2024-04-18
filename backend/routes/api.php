@@ -16,17 +16,7 @@ Route::controller(UserController::class)->group(function () {
     Route::post('logout', 'logout');
     Route::post('refresh', 'refresh');
 });
-Route::group(["middleware" => "user.role"], function (){
-    
-    Route::post('create_post', [PostController::class, 'create_post']);
-    Route::post('create_comment', [CommentController::class, 'create_comment']);
+Route::post('create_post', [PostController::class, 'create_post']);
+Route::post('create_comment', [CommentController::class, 'create_comment']);
 
-    Route::get('get_comments/{id}', [CommentController::class, 'get_comments']);
-
-});
-
-
-
-
-
-
+Route::get('get_comments/{id}', [CommentController::class, 'get_comments']);
