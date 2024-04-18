@@ -62,7 +62,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+<img src="./readme/screenshot_2024-04-18_at_6.03.08___pm.png" alt="Logo" >
 
 ResQ is an app that syncs with a gadget to aid users during natural disasters. It broadcasts emergency alerts, provides guidance on what to do, and offers navigation assistance to safety. It also fosters community support and works offline for accessibility.
 
@@ -97,12 +97,12 @@ Offline Functionality: Works even without an internet connection for accessibili
 
 _Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+
+1. Clone the repo
    ```sh
    git clone https://github.com/GhiwaDaccache/hackathon-repo.git
    ```
-3. Install NPM packages
+2. Install NPM packages
    ```sh
    npm install
    ```
