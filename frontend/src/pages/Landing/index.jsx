@@ -7,6 +7,7 @@ import axios from "axios";
 import Header from "../components/Header";
 import DisasterCard from "./components/DisasterCard";
 import TipsTricksCarousel from "./components/TipsTricksCarousel";
+import Footer from "../components/Footer";
 
 // Assets
 import map from "../../assets/map.png";
@@ -396,6 +397,7 @@ const Landing = () => {
           ))}
         </div>
       </section>
+      <Footer />
     </>
   );
 };
