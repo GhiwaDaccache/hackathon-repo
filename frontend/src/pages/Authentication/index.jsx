@@ -25,6 +25,9 @@ const Authentication = () => {
 
   const handleAuth = () => {
     axios({
+      url: login
+        ? "http://localhost:8000/api/login"
+        : "http://localhost:8000/api/register",
       method: "POST",
       body: {
         ...authInfo,
